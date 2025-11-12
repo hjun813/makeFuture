@@ -26,7 +26,7 @@ const handleLogout = () => {
 </script>
 
 <style>
-/* 전역 스타일 */
+/* 전역 */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   margin: 0;
@@ -81,7 +81,7 @@ body {
   align-items: flex-start;
 }
 
-/* 인증 폼 스타일 (LoginView.vue, SignupView.vue 공통) */
+/* 인증 폼 */
 .auth-container {
   width: 100%;
   max-width: 400px;
@@ -107,7 +107,7 @@ body {
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* padding이 width에 포함되도록 */
+  box-sizing: border-box;
 }
 .auth-button {
   width: 100%;

@@ -21,20 +21,30 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useAuthStore } from '@/stores/authStore';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router'; 
 
 const email = ref('');
 const password = ref('');
 const authStore = useAuthStore();
+const router = useRouter(); 
 
-const handleLogin = () => {
-  authStore.login({
+
+const handleLogin = async () => {
+  const success = await authStore.login({
     email: email.value,
     password: password.value
   });
+
+
+  if (success) {
+    alert('로그인 성공!');
+    router.push('/');
+  } else {
+    alert('이메일 또는 비밀번호를 확인하세요.');
+  }
 };
 </script>
 
 <style scoped>
-/* (스타일은 7번 App.vue의 <style> 블록을 참고하세요) */
+/* ... */
 </style>

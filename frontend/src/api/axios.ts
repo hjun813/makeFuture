@@ -3,13 +3,12 @@ import axios, { type InternalAxiosRequestConfig } from 'axios';
 import { useAuthStore } from '@/stores/authStore';
 
 const apiClient = axios.create({
-    baseURL: 'http://localhost:8080', // 백엔드 서버 주소
+    baseURL: 'http://localhost:8080',
     headers: {
         'Content-Type': 'application/json',
     }
 });
 
-// Axios 요청 인터셉터
 apiClient.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
         
