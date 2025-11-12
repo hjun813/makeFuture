@@ -1,7 +1,8 @@
-package com.example.sequrity;
+package com.example.backend.sequrity;
 
-import com.example.domain.User;
-import com.example.repository.UserRepository;
+import com.example.backend.domain.User;
+import com.example.backend.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

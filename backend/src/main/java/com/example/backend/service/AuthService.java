@@ -1,11 +1,12 @@
-package com.example.service;
+package com.example.backend.service;
 
-import com.example.dto.JwtResponseDto;
-import com.example.dto.LoginRequestDto;
-import com.example.dto.SignupRequestDto;
-import com.example.domain.User;
-import com.example.jwt.JwtUtil;
-import com.example.repository.UserRepository;
+import com.example.backend.domain.User;
+import com.example.backend.dto.JwtResponseDto;
+import com.example.backend.dto.LoginRequestDto;
+import com.example.backend.dto.SignupRequestDto;
+import com.example.backend.jwt.JwtUtil;
+import com.example.backend.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

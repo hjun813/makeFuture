@@ -1,4 +1,4 @@
-package com.example.jwt;
+package com.example.backend.jwt;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

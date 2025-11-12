@@ -1,8 +1,8 @@
-package com.example.repository;
+package com.example.backend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.domain.User;
+import com.example.backend.domain.User;
 
 import java.util.Optional;
 

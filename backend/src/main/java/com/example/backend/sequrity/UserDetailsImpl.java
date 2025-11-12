@@ -1,7 +1,9 @@
-package com.example.sequrity;
-import com.example.domain.User;
+package com.example.backend.sequrity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.example.backend.domain.User;
+
 import java.util.Collection;
 import java.util.Collections;
 
