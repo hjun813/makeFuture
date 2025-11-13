@@ -48,7 +48,10 @@ public class SecurityConfig {
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers(
+                "/v3/api-docs/**",
+                "/swagger-ui/**",
+                "/swagger").permitAll()
                 .requestMatchers(new RequestHeaderRequestMatcher("Access-Control-Request-Method")).permitAll()
                 .anyRequest().authenticated()
             );
