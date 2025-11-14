@@ -4,6 +4,9 @@
       <h1>My Job Dashboard</h1>
       <nav v-if="authStore.isAuthenticated">
         <RouterLink to="/">대시보드</RouterLink>
+        
+        <RouterLink to="/jobs">공고 관리</RouterLink>
+
         <button @click="handleLogout" class="logout-button">로그아웃</button>
       </nav>
     </header>
