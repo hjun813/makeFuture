@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
 import JobsView from '../views/JobsView.vue'; // ✅ 1. JobsView 임포트
+import AllJobsView from '@/views/AllJobsView.vue';
 import { useAuthStore } from '@/stores/authStore'
 
 const routes: Array<RouteRecordRaw> = [
@@ -18,6 +19,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'jobs',
     component: JobsView,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/all-jobs',
+    name: 'all-jobs',
+    component: AllJobsView,
+    meta: { requiresAuth: true } // (로그인한 사용자만 보도록 설정)
   },
   {
     path: '/login',

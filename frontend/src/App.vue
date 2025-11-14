@@ -5,8 +5,8 @@
       <nav v-if="authStore.isAuthenticated">
         <RouterLink to="/">대시보드</RouterLink>
         
-        <RouterLink to="/jobs">공고 관리</RouterLink>
-
+        <RouterLink to="/jobs">내 공고</RouterLink> 
+        <RouterLink to="/all-jobs">전체 공고</RouterLink> 
         <button @click="handleLogout" class="logout-button">로그아웃</button>
       </nav>
     </header>

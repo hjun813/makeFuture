@@ -10,4 +10,5 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 
     List<Job> findAllByUserOrderByDeadlineAsc(User user); 
     Optional<Job> findByIdAndUser(Long id, User user);
+    List<Job> findAllByOrderByDeadlineAsc();
 }

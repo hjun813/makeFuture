@@ -56,6 +56,14 @@ public class JobService {
                 .collect(Collectors.toList());
     }
 
+    public List<JobResponseDto> getAllJobs(){
+        List<Job> jobs = jobRepository.findAllByOrderByDeadlineAsc();
+
+        return jobs.stream()
+                .map(JobResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
     //공고 삭제
     @Transactional 
     public void deleteJob(Long jobId, String userEmail) {

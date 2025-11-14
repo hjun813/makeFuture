@@ -25,6 +25,7 @@ export interface JobCreate {
 export const useJobStore = defineStore('job', () => {
  
     const jobs = ref<Job[]>([]);
+    const allJobs = ref<Job[]>([]);
     const isLoading = ref(false); 
 
     const sortedJobs = computed(() => {
@@ -36,6 +37,13 @@ export const useJobStore = defineStore('job', () => {
         });
     });
 
+    const sortedAllJobs = computed(() => {
+        return [...allJobs.value].sort((a, b) => {
+            if (!a.deadline) return 1;
+            if (!b.deadline) return -1;
+            return new Date(a.deadline).getTime() - new Date(b.deadline).getTime();
+        });
+    });
 
     const fetchJobs = async () => {
         isLoading.value = true;
@@ -50,6 +58,18 @@ export const useJobStore = defineStore('job', () => {
         }
     };
 
+    const fetchAllJobs = async () => {
+        isLoading.value = true;
+        try {
+            const response = await apiClient.get<Job[]>('/api/jobs/all');
+            allJobs.value = response.data;
+        } catch (error) {
+            console.error('전체 공고 목록 로딩 실패:', error);
+            allJobs.value = [];
+        } finally {
+            isLoading.value = false;
+        }
+    };
 
     const createJob = async (newJobData: JobCreate): Promise<boolean> => {
         isLoading.value = true;
@@ -85,9 +105,12 @@ export const useJobStore = defineStore('job', () => {
 
     return {
         jobs,
+        allJobs,
         isLoading,
         sortedJobs,
+        sortedAllJobs,
         fetchJobs,
+        fetchAllJobs,
         createJob,
         deleteJob
     };

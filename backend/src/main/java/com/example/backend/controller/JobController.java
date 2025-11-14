@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/jobs")
 @RequiredArgsConstructor
@@ -59,4 +60,11 @@ public class JobController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<JobResponseDto>> getAllJobs() {
+        List<JobResponseDto> allJobs = jobService.getAllJobs();
+        return ResponseEntity.ok(allJobs);
+    }
+    
 }
