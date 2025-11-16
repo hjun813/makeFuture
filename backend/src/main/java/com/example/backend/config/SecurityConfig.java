@@ -49,7 +49,7 @@ public class SecurityConfig {
         config.setAllowedHeaders(List.of("*"));
         
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/**", config); 
+        source.registerCorsConfiguration("/**", config); 
         return source;
     }
 
@@ -77,7 +77,10 @@ public class SecurityConfig {
                 .requestMatchers(
                     "/v3/api-docs/**",
                     "/swagger-ui/**",
-                    "/swagger-ui.html"
+                    "/swagger-ui.html",
+                    "/swagger-ui/index.html",
+                    "/swagger-ui/index.html/**",
+                    "/swagger"
                 ).permitAll()
                 
                 
