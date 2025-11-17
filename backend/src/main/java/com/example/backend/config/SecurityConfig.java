@@ -73,7 +73,8 @@ public class SecurityConfig {
                 // 여기
                 .requestMatchers("/api/auth/**").permitAll() 
                 .requestMatchers("/api/jobs/**").permitAll()
-                
+                .requestMatchers("/api/todos/**").permitAll()
+
                 .requestMatchers(
                     "/v3/api-docs/**",
                     "/swagger-ui/**",

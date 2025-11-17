@@ -66,7 +66,7 @@ class JobServiceTest {
 
     @Test
     @DisplayName("공고 등록 성공 - 올바른 사용자와 연결되는지 확인")
-    void createJob_success() {
+    void 공고_등록_성공_테스트() {
         
         JobResponseDto responseDto = jobService.createJob(jobDto, userA.getEmail());
 
@@ -81,7 +81,7 @@ class JobServiceTest {
 
     @Test
     @DisplayName("내 공고 목록 조회 - 본인 공고만 조회되는지 확인")
-    void getMyJobs_success() {
+    void 내공고_목록_조회_테스트() {
 
         jobService.createJob(jobDto, userA.getEmail());
 
@@ -98,7 +98,7 @@ class JobServiceTest {
 
     @Test
     @DisplayName("공고 삭제 성공 - 본인 공고")
-    void deleteJob_success() {
+    void 내공고_선택_삭제_성공() {
 
         // userA가 공고 생성
         JobResponseDto createdJobDto = jobService.createJob(jobDto, userA.getEmail());
@@ -115,7 +115,7 @@ class JobServiceTest {
 
     @Test
     @DisplayName("공고 삭제 실패 (보안 테스트) - 타인의 공고")
-    void deleteJob_fail_not_owner() {
+    void 타인_공고_삭제_실패_테스트() {
 
         // userA가 공고 생성
         JobResponseDto createdJobDto = jobService.createJob(jobDto, userA.getEmail());
@@ -134,7 +134,7 @@ class JobServiceTest {
 
     @Test
     @DisplayName("공고 삭제 실패 - 존재하지 않는 공고")
-    void deleteJob_fail_job_not_found() {
+    void 공고_삭제_실패_존재하지_않는_공고_테스트() {
 
         Long nonExistentJobId = 9999L; // 존재하지 않는 ID
 

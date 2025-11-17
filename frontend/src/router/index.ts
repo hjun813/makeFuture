@@ -2,7 +2,8 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
-import JobsView from '../views/JobsView.vue'; // ✅ 1. JobsView 임포트
+import JobsView from '../views/JobsView.vue'; 
+import TodosView from '../views/TodosView.vue';
 import AllJobsView from '@/views/AllJobsView.vue';
 import { useAuthStore } from '@/stores/authStore'
 
@@ -35,6 +36,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/signup',
     name: 'signup',
     component: SignupView
+  },
+  {
+    path: '/todos',
+    name: 'todos',
+    component: TodosView,
+    meta: { requiresAuth: true }
   }
 ];
 

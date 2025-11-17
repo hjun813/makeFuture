@@ -1,0 +1,1 @@
+export type TodoCategory = 'TODAY' | 'WEEK' | 'MONTH';

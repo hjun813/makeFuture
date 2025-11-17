@@ -7,6 +7,7 @@
         
         <RouterLink to="/jobs">내 공고</RouterLink> 
         <RouterLink to="/all-jobs">전체 공고</RouterLink> 
+        <RouterLink to="/todos">Todo 관리</RouterLink>
         <button @click="handleLogout" class="logout-button">로그아웃</button>
       </nav>
     </header>
