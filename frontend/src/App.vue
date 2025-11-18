@@ -8,7 +8,7 @@
         <RouterLink to="/jobs">MyJobs</RouterLink> 
         <RouterLink to="/all-jobs">AllJobs</RouterLink> 
         <RouterLink to="/todos">Todo</RouterLink>
-        <RouterLink to="/histories">history</RouterLink>
+        <RouterLink to="/histories">History</RouterLink>
         <button @click="handleLogout" class="logout-button">Logout</button>
       </nav>
     </header>

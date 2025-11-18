@@ -1,6 +1,6 @@
 <template>
   <div class="todo-view-container">
-    <h2>나의 할 일 (Todo List)</h2>
+    <h2>나의 할 일</h2>
 
     <form @submit.prevent="handleCreateTodo" class="todo-form">
       <input 
