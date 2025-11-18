@@ -7,6 +7,7 @@ import TodosView from '../views/TodosView.vue';
 import AllJobsView from '@/views/AllJobsView.vue';
 import { useAuthStore } from '@/stores/authStore';
 import HistoryView from '../views/HistoryView.vue';
+import AboutView from '@/views/AboutView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -49,6 +50,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'histories',
     component: HistoryView,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView,
+    // meta: { requiresAuth: true } // 로그인 안 해도 볼 수 있게 하려면 주석 처리 (선택)
   }
 
 ];

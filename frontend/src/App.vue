@@ -16,12 +16,15 @@
     <main class="main-content">
       <RouterView />
     </main>
+
+    <TheFooter />
   </div>
 </template>
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
 import { useAuthStore } from '@/stores/authStore';
+import TheFooter from '@/components/TheFooter.vue';
 
 const authStore = useAuthStore();
 
