@@ -5,7 +5,8 @@ import SignupView from '../views/SignupView.vue'
 import JobsView from '../views/JobsView.vue'; 
 import TodosView from '../views/TodosView.vue';
 import AllJobsView from '@/views/AllJobsView.vue';
-import { useAuthStore } from '@/stores/authStore'
+import { useAuthStore } from '@/stores/authStore';
+import HistoryView from '../views/HistoryView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -42,7 +43,14 @@ const routes: Array<RouteRecordRaw> = [
     name: 'todos',
     component: TodosView,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/histories',
+    name: 'histories',
+    component: HistoryView,
+    meta: { requiresAuth: true }
   }
+
 ];
 
 const router = createRouter({

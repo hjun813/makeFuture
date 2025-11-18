@@ -1,14 +1,15 @@
 <template>
   <div id="app-container">
     <header class="app-header">
-      <h1>My Job Dashboard</h1>
+      <h1>MakeFuture</h1>
       <nav v-if="authStore.isAuthenticated">
-        <RouterLink to="/">대시보드</RouterLink>
+        <RouterLink to="/">Home</RouterLink>
         
-        <RouterLink to="/jobs">내 공고</RouterLink> 
-        <RouterLink to="/all-jobs">전체 공고</RouterLink> 
-        <RouterLink to="/todos">Todo 관리</RouterLink>
-        <button @click="handleLogout" class="logout-button">로그아웃</button>
+        <RouterLink to="/jobs">MyJobs</RouterLink> 
+        <RouterLink to="/all-jobs">AllJobs</RouterLink> 
+        <RouterLink to="/todos">Todo</RouterLink>
+        <RouterLink to="/histories">history</RouterLink>
+        <button @click="handleLogout" class="logout-button">Logout</button>
       </nav>
     </header>
 
