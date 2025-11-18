@@ -63,12 +63,12 @@
           
           <div class="todo-buttons">
             <template v-if="editingTodoId === todo.id">
-              <button @click="saveEdit(todo.id)" class="action-button save">✓</button>
-              <button @click="cancelEdit" class="action-button cancel">×</button>
+              <button @click="saveEdit(todo.id)" class="action-button save" title="저장">✅</button>
+              <button @click="cancelEdit" class="action-button cancel" title="취소">❌</button>
             </template>
             <template v-else>
-              <button @click="startEdit(todo)" class="action-button edit">✎</button>
-              <button @click="todoStore.deleteTodo(todo.id)" class="delete-button">×</button>
+              <button @click="startEdit(todo)" class="action-button edit" title="수정">✏️</button>
+              <button @click="todoStore.deleteTodo(todo.id)" class="delete-button" title="삭제">🗑️</button>
             </template>
           </div>
         </li>
