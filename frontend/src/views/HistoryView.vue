@@ -1,6 +1,6 @@
 <template>
   <div class="history-view-container">
-    <h2>나의 히스토리</h2>
+    <h2>나의 기록</h2>
     <p class="description">오늘 한 일, 배운 것, 느낀 점을 간단히 기록해 보세요.</p>
 
     <form @submit.prevent="handleCreateHistory" class="history-form">

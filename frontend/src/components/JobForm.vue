@@ -16,7 +16,22 @@
       </div>
       <div class="form-group">
         <label for="deadline">마감일</label>
-        <input id="deadline" v-model="formData.deadline" type="date" />
+        <div class="deadline-input-group">
+          <input 
+            id="deadline" 
+            v-model="formData.deadline" 
+            type="date" 
+            :disabled="isNoDeadline" 
+          />
+          <label class="checkbox-label">
+            <input 
+              type="checkbox" 
+              v-model="isNoDeadline" 
+              @change="handleNoDeadlineChange" 
+            />
+            채용시 마감
+          </label>
+        </div>
       </div>
       <div class="form-group">
         <label for="jobType">유형</label>
@@ -49,6 +64,13 @@ const formData = ref<JobCreate>({
   deadline: '', // type="date"는 YYYY-MM-DD 문자열을 반환
   jobType: ''
 });
+
+const isNoDeadline = ref(false);
+const handleNoDeadlineChange = () => {
+  if (isNoDeadline.value) {
+    formData.value.deadline = ''; // 날짜 초기화
+  }
+};
 
 const handleSubmit = async () => {
   // 빈 문자열 대신 undefined로 보내도록 처리 (선택)
@@ -84,6 +106,19 @@ const handleSubmit = async () => {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
+}
+.deadline-input-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
 }
 .form-grid {
   display: grid;
