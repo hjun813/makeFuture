@@ -22,11 +22,13 @@
 import { ref } from 'vue';
 import { useAuthStore } from '@/stores/authStore';
 import { RouterLink, useRouter } from 'vue-router'; 
+import { useToast } from "vue-toastification";
 
 const email = ref('');
 const password = ref('');
 const authStore = useAuthStore();
 const router = useRouter(); 
+const toast = useToast();
 
 
 const handleLogin = async () => {
@@ -37,10 +39,10 @@ const handleLogin = async () => {
 
 
   if (success) {
-    alert('로그인 성공!');
+    toast.success('환영합니다! 로그인 되었습니다.');
     router.push('/');
   } else {
-    alert('이메일 또는 비밀번호를 확인하세요.');
+    toast.error('이메일 또는 비밀번호를 확인하세요.');
   }
 };
 </script>

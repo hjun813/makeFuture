@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import apiClient from '@/api/axios';
 import type { TodoCategory } from '@/types/todoTypes';
+import { useToast } from "vue-toastification";
 
 export interface Todo {
     id: number;
@@ -32,6 +33,7 @@ export const useTodoStore = defineStore('todo', () => {
     const todosMonth = computed(() =>
         todos.value.filter(t => t.category === 'MONTH')
     );
+    const toast = useToast();
 
     const fetchTodos = async () => {
         isLoading.value = true;
@@ -68,7 +70,7 @@ export const useTodoStore = defineStore('todo', () => {
         } catch (error) {
             console.error('Todo 상태 업데이트 실패:', error);
             if (todo) todo.isDone = !isDone; 
-            alert('상태 변경에 실패했습니다.');
+            toast.error('상태 변경에 실패했습니다.');
         }
     };
     
@@ -84,7 +86,7 @@ export const useTodoStore = defineStore('todo', () => {
         } catch (error) {
             console.error('Todo 내용 수정 실패:', error);
             todo.content = oldContent;
-            alert('내용 수정에 실패했습니다.');
+            toast.error('내용 수정에 실패했습니다.');
         }
     };
 
@@ -101,7 +103,7 @@ export const useTodoStore = defineStore('todo', () => {
             if (deletedTodoArray && deletedTodoArray[0]) {
                 todos.value.splice(index, 0, deletedTodoArray[0]);
             }
-            alert('삭제에 실패했습니다.');
+            toast.error('삭제에 실패했습니다.');
         }
     };
 
