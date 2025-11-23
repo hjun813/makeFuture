@@ -3,7 +3,7 @@ import axios, { type InternalAxiosRequestConfig } from 'axios';
 import { useAuthStore } from '@/stores/authStore';
 
 const apiClient = axios.create({
-    baseURL: 'http://54.180.113.166:8080',
+    baseURL: 'http://13.124.62.191:8080',
     headers: {
         'Content-Type': 'application/json',
     }
