@@ -3,7 +3,8 @@
 
 이 프로젝트는 Vue.js 3와 Spring Boot 3를 사용하여 구축한 개인 맞춤형 취업 준비 관리 플랫폼입니다. AWS EC2와 Docker를 활용해 배포되었으며, Nginx와 SSL을 적용하여 보안성을 강화했습니다.
 
-🔗 배포 주소 (Live Demo)
+* 🔗 배포 주소 (Live Demo)
+
 Frontend (Vercel): https://make-future.vercel.app
 
 Backend API (AWS): https://hjun813.shop
