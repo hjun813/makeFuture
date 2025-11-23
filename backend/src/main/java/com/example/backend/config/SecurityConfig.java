@@ -1,6 +1,5 @@
 package com.example.backend.config;
 
-
 import com.example.backend.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -38,13 +37,15 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 
-    
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:5173", "https://https://make-future.vercel.app")); 
+        config.setAllowedOrigins(List.of(
+            "http://localhost:5173", 
+            "https://make-future.vercel.app"
+        )); 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         
@@ -53,27 +54,21 @@ public class SecurityConfig {
         return source;
     }
 
-    
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-            
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> 
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             
-            
             .authorizeHttpRequests(auth -> auth
-                
-                
+ 
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() 
                 
-                // 여기
+
                 .requestMatchers("/api/auth/**").permitAll() 
-                .requestMatchers("/api/jobs/**").permitAll()
-                .requestMatchers("/api/todos/**").permitAll()
+                
 
                 .requestMatchers(
                     "/v3/api-docs/**",
@@ -84,10 +79,9 @@ public class SecurityConfig {
                     "/swagger"
                 ).permitAll()
                 
-                
+
                 .anyRequest().authenticated()
             );
-        
         
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
             
