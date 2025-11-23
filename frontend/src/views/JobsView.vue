@@ -22,8 +22,9 @@
             <span>@ {{ job.companyName }}</span>
           </div>
           <div class="card-body">
-            <p v-if="job.deadline" class="deadline">
-              마감일: {{ formatDate(job.deadline) }} ({{ getDDay(job.deadline) }})
+            <p class="deadline" :class="{ 'no-deadline': !job.deadline }">
+              마감일: {{ job.deadline ? formatDate(job.deadline) : '-' }} 
+              <span class="d-day-badge">({{ getDDay(job.deadline) }})</span>
             </p>
             <p v-if="job.jobType" class="job-type">{{ job.jobType }}</p>
           </div>
@@ -62,7 +63,7 @@ const formatDate = (dateString: string | null): string => {
 };
 
 const getDDay = (dateString: string | null): string => {
-  if (!dateString) return 'D-??';
+  if (!dateString) return '채용시 마감';
   const today = new Date();
   const deadline = new Date(dateString);
   today.setHours(0, 0, 0, 0); // 시간 제거
@@ -86,6 +87,13 @@ const getDDay = (dateString: string | null): string => {
   text-align: center;
   padding: 2rem;
   color: #777;
+}
+.deadline.no-deadline {
+  color: #555; /* 일반 텍스트 색상 */
+}
+.deadline.no-deadline .d-day-badge {
+  color: #28a745; /* 초록색 (긍정적 느낌) */
+  font-weight: bold;
 }
 .job-list {
   list-style: none;

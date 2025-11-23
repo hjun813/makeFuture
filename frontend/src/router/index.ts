@@ -2,9 +2,12 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
-import JobsView from '../views/JobsView.vue'; // ✅ 1. JobsView 임포트
+import JobsView from '../views/JobsView.vue'; 
+import TodosView from '../views/TodosView.vue';
 import AllJobsView from '@/views/AllJobsView.vue';
-import { useAuthStore } from '@/stores/authStore'
+import { useAuthStore } from '@/stores/authStore';
+import HistoryView from '../views/HistoryView.vue';
+import AboutView from '@/views/AboutView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -35,7 +38,26 @@ const routes: Array<RouteRecordRaw> = [
     path: '/signup',
     name: 'signup',
     component: SignupView
+  },
+  {
+    path: '/todos',
+    name: 'todos',
+    component: TodosView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/histories',
+    name: 'histories',
+    component: HistoryView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView,
+    // meta: { requiresAuth: true } // 로그인 안 해도 볼 수 있게 하려면 주석 처리 (선택)
   }
+
 ];
 
 const router = createRouter({
