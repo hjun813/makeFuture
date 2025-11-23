@@ -1,5 +1,15 @@
 # MakeWorld (취업 준비 올인원 대시보드)
-이 프로젝트는 Vue.js (Frontend)와 Spring Boot (Backend)를 사용하여 구축한 신입/인턴 구직자를 위한 개인 맞춤형 취업 준비 플랫폼입니다.
+<img width="1896" height="890" alt="image" src="https://github.com/user-attachments/assets/3ac0cb0e-ea23-42c5-84d5-68581e134521" />
+
+이 프로젝트는 Vue.js 3와 Spring Boot 3를 사용하여 구축한 개인 맞춤형 취업 준비 관리 플랫폼입니다. AWS EC2와 Docker를 활용해 배포되었으며, Nginx와 SSL을 적용하여 보안성을 강화했습니다.
+
+🔗 배포 주소 (Live Demo)
+Frontend (Vercel): https://make-future.vercel.app
+
+Backend API (AWS): https://hjun813.shop
+
+API 문서 (Swagger): https://hjun813.shop/swagger-ui.html
+
 
 ## 1. 프로젝트 계기
 신입, 인턴 채용 공고를 여러 사이트에서 확인하고, 학습 계획과 지원 이력을 별도로 관리하는 것에 비효율을 느꼈습니다. 채용 정보 아카이빙부터 일정 관리, 성장 기록까지 취업 준비의 전 과정을 데이터화하여 한곳에서 시각적으로 관리할 수 있는 '나만의 취업 비서 서비스'가 필요하여 개발하게 되었습니다.
@@ -32,55 +42,40 @@ JWT 로그인: Spring Security와 JWT를 활용한 Stateless 인증 시스템을
 * 📊 통합 대시보드 
 위젯 시스템: 로그인 시 마감 임박 공고, 오늘의 할 일, 최근 활동 기록을 한 화면에서 요약해 보여줍니다.
 
-## 3. 기술 스택
+## 3. 시스템 아키텍처 & 기술 스택
 [![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?logo=vue.js&logoColor=white)](https://vuejs.org/)
 [![Spring](https://img.shields.io/badge/Spring-6DB33F?logo=spring&logoColor=white)](https://spring.io/projects/spring-boot)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
 
+* Architecture
+  
+Frontend: Vercel을 통한 정적 호스팅 (HTTPS 자동 적용).
+Backend: AWS EC2 인스턴스 위에서 Docker 컨테이너로 구동.
+Network: Nginx를 Reverse Proxy로 두어 SSL(Let's Encrypt) 적용 및 8080포트 포워딩.
+Database: Docker Container 기반의 MySQL 운영.
+
 ## 4. 프로젝트 구조
-
-```Bash
-
+```
 .
 ├── backend/ (Spring Boot)
 │   ├── src/main/java/com/example/backend/
 │   │   ├── config/           # Security, CORS, Swagger 설정
 │   │   ├── controller/       # API 엔드포인트 (Auth, Job, Todo, History)
 │   │   ├── domain/           # JPA Entity (User, Job, Todo, History)
-│   │   ├── dto/              # Data Transfer Objects
-│   │   ├── jwt/              # JWT 인증/인가 필터 및 유틸리티
-│   │   ├── repository/       # JPA Repository
+│   │   ├── dto/              # Request/Response DTOs
+│   │   ├── jwt/              # JWT 필터 및 유틸리티
+│   │   ├── repository/       # JPA Repository Interface
 │   │   └── service/          # 비즈니스 로직
 │   └── src/main/resources/
-│       └── application.properties   # DB 및 JWT 설정
+│       └── application.properties
 │
 └── frontend/ (Vue.js)
     ├── src/
-    │   ├── api/              # Axios 인스턴스 및 인터셉터
-    │   ├── components/       # 공통 컴포넌트 (JobForm, Footer 등)
+    │   ├── api/              # Axios 인스턴스 (Interceptor 설정)
+    │   ├── components/       # 공통 컴포넌트 (Footer, JobForm 등)
     │   ├── stores/           # Pinia 상태 관리 (auth, job, todo, history)
-    │   ├── types/            # TypeScript 타입 정의
-    │   ├── views/            # 페이지 (Home, Login, Jobs, Todos, History 등)
+    │   ├── views/            # 페이지 (Home, Login, Jobs, Todos, History)
     │   ├── App.vue           # 루트 컴포넌트
-    │   └── main.ts           # Vue 앱 인스턴스 생성
-    ├── index.html
-    └── package.json
-
-```
-
-## 5. 실행 방법
-Backend
-```Bash
-
-cd backend
-./gradlew bootRun
-
-```
-
-Frontend
-```Bash
-
-cd frontend
-npm install
-npm run dev
+    │   └── main.ts           # Entry Point
+    └── vercel.json           # Vercel 배포 설정
 ```
